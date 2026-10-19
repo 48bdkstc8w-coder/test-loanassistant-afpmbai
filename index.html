@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0d3b66">
+  <title>AFPMBAI Loan Assistant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-info">
+        <div class="status-indicator"></div>
+        <div>
+          <h1>AFPMBAI Loan Assistant</h1>
+          <p class="sub-text">Impormasyon sa Loan at Benepisyo</p>
+        </div>
+      </div>
+      <button id="reset-btn" class="icon-btn" title="Simulan muli ang usapan" aria-label="Simulan muli ang usapan">
+        ↻ Bagong Usapan
+      </button>
+    </header>
+
+    <!-- Chat Messages Window -->
+    <main id="chat-window" class="chat-window" aria-live="polite">
+      <!-- Magsusulputan dito ang messages gamit ang JavaScript -->
+    </main>
+
+    <!-- Quick Action Suggestions -->
+    <div class="quick-replies" id="quick-replies" aria-label="Mabilis na mga pagpipilian">
+      <button class="chip" data-query="Ano ang Salary Loan?">Salary Loan</button>
+      <button class="chip" data-query="Ano ang Policy Loan?">Policy Loan</button>
+      <button class="chip" data-query="Paano mag-apply ng Calamity Loan?">Calamity Loan</button>
+      <button class="chip" data-query="Sino ang eligible maging miyembro?">Membership</button>
+      <button class="chip" data-query="Paano makipag-ugnayan sa AFPMBAI?">Contact / Helpdesk</button>
+    </div>
+
+    <!-- Chat Input Area -->
+    <footer class="input-container">
+      <form id="chat-form" class="chat-form">
+        <input 
+          type="text" 
+          id="user-input" 
+          placeholder="Magtanong ukol sa loans, requirements, o membership..." 
+          autocomplete="off"
+          required
+        />
+        <button type="submit" id="send-btn" aria-label="Ipadala ang mensahe">
+          Ipadala
+        </button>
+      </form>
+    </footer>
+  </div>
+
+  <!-- Inquiry Modal / Form -->
+  <div id="inquiry-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 id="modal-title">Ipadala ang Iyong Inquiry</h2>
+        <button id="close-modal-btn" class="close-btn" aria-label="Isara">&times;</button>
+      </div>
+      
+      <p class="modal-notice">
+        Ito ay ipapadala sa opisyal na handling email: <strong>escadpeideas@gmail.com</strong>
+      </p>
+
+      <form id="inquiry-form">
+        <div class="form-group">
+          <label for="inq-name">Pangalan (Opsyonal)</label>
+          <input type="text" id="inq-name" placeholder="Hal. Juan Dela Cruz">
+        </div>
+
+        <div class="form-group">
+          <label for="inq-email">Email Address <span class="required">*</span></label>
+          <input type="email" id="inq-email" placeholder="pangalan@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="inq-phone">Contact Number <span class="required">*</span></label>
+          <input type="tel" id="inq-phone" placeholder="Hal. 09171234567" pattern="^(09|\+639)\d{9}$" required>
+          <small class="helper-text">Format: 09XXXXXXXXX o +639XXXXXXXXX</small>
+        </div>
+
+        <div class="form-group">
+          <label for="inq-question">Inyong Tanong o Mensahe <span class="required">*</span></label>
+          <textarea id="inq-question" rows="3" placeholder="Isulat dito ang detalye ng inyong katanungan..." required></textarea>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="inq-consent" required>
+          <label for="inq-consent">
+            Sumasang-ayon ako na ibahagi ang aking contact information para sa pagsagot sa aking inquiry alinsunod sa Data Privacy Act. <span class="required">*</span>
+          </label>
+        </div>
+
+        <!-- Status Message Banner -->
+        <div id="form-status" class="form-status hidden"></div>
+
+        <div class="modal-actions">
+          <button type="button" id="cancel-inq-btn" class="btn-secondary">Kanselahin</button>
+          <button type="submit" id="submit-inq-btn" class="btn-primary">Ihanda at Ipadala</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
